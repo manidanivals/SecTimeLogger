@@ -2,8 +2,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
-from Models.Data import Base, engine
-from Models.Timesheet import Timesheet
+
 
 # SQLite database URL
 DATABASE_URL = "sqlite:///./time_logging.db"
