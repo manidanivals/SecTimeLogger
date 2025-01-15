@@ -166,3 +166,4 @@ cython_debug/
 /.venv/
 time_logging.db
 /.idea
+.idea/workspace.xml

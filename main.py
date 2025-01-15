@@ -96,19 +96,26 @@ def create_user(request: UserCreateRequest, token: str = Depends(admin_required)
     return user_dto.__dict__
 
 
-@app.put("/users/{user_id}", response_model=dict, dependencies=[Depends(RateLimiter(times=5, seconds=60))])
-def update_user(user_id: int, request: UserUpdateRequest):
-    """
-    Route to update an existing user.
-    """
-    user_dto = user_controller.update_user(
-        user_id=user_id,
-        username=request.username,
-        email=request.email,
-        password=request.password,
+@app.put("/users/{email}", response_model=dict, dependencies=[Depends(RateLimiter(times=5, seconds=60))])
+def update_user_by_email(
+    email: str,
+    request: UserUpdateRequest,
+    current_user: User = Depends(get_current_user)
+):
+    # Ensure either the user is admin or the user is updating their own account
+    if current_user.role != "admin" and current_user.email != email:
+        raise HTTPException(status_code=403, detail="Not allowed to update another user's information.")
 
+    # Perform the update via the controller. (We assume you’ll create a 'update_user_by_email' method)
+    user_dto = user_controller.update_user_by_email(
+        email=email,
+        username=request.username,
+        new_email=request.email,   # if we allow them to change email
+        password=request.password,
+        role=request.role
     )
     return user_dto.__dict__
+
 @app.get("/users", response_model=list, dependencies=[Depends(RateLimiter(times=5, seconds=60))])
 def get_users(
     role: str = Depends(user_controller.get_current_user_role),
@@ -119,7 +126,10 @@ def get_users(
     """
     users = user_controller.get_users_by_role(role=role, company=company)
     return [UserDTO.from_user(user) for user in users]
-
+@app.delete("/users/{user_id}", response_model=dict, dependencies=[Depends(admin_required), Depends(RateLimiter(times=5, seconds=60))])
+def delete_user(user_id: int):
+    user_controller.delete_user(user_id)
+    return {"message": "User deleted successfully"}
 @app.post("/time-logs", response_model=dict, dependencies=[Depends(RateLimiter(times=5, seconds=60))])
 def log_time_entry(
     request: TimeLogCreateRequest,
