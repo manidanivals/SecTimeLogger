@@ -115,7 +115,7 @@ def get_users(
     users = user_controller.get_users_by_role(role=role, company=company)
     return [UserDTO.from_user(user) for user in users]
 
-@app.post("/time-logs", response_model=dict)
+@app.post("/time-logs", response_model=dict, dependencies=[Depends(RateLimiter(times=5, seconds=60))])
 def log_time_entry(
     request: TimeLogCreateRequest,
     current_user: User = Depends(get_current_user)
@@ -132,7 +132,7 @@ def log_time_entry(
     return timesheet_dto.__dict__
 
 
-@app.get("/time-logs/me", response_model=list)
+@app.get("/time-logs/me", response_model=list, dependencies=[Depends(RateLimiter(times=5, seconds=60))])
 def get_my_time_logs(
     current_user: User = Depends(get_current_user)
 ):
@@ -143,7 +143,7 @@ def get_my_time_logs(
     return [log.__dict__ for log in logs]
 
 
-@app.get("/time-logs/company", response_model=list)
+@app.get("/time-logs/company", response_model=list, dependencies=[Depends(RateLimiter(times=5, seconds=60))])
 def get_company_time_logs(
     role: str = Depends(get_current_user_role),
     company: str = Depends(get_current_user_company)
@@ -168,7 +168,7 @@ def get_company_time_logs(
         raise HTTPException(status_code=403, detail="Not authorized to view company logs")
 
 
-@app.get("/time-logs/company/total", response_model=dict)
+@app.get("/time-logs/company/total", response_model=dict, dependencies=[Depends(RateLimiter(times=5, seconds=60))])
 def get_company_total_time(
     role: str = Depends(get_current_user_role),
     company: str = Depends(get_current_user_company)

@@ -4,24 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="db29fd7d-0a79-4a4d-9b6a-1bd209a8477c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/TimeLoggerAPI.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Controllers/TimesheetController.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Controllers/UserController.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Helper/GetRole.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/Data.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/Timesheet.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/TimesheetDTO.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/User.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/UserDTO.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Service/Logging.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Service/Security.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+    <list default="true" id="db29fd7d-0a79-4a4d-9b6a-1bd209a8477c" name="Changes" comment="init">
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +22,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "manidanivals"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/manidanivals/SecTimeLogger",
+    "accountId": "b46299ab-02fc-4842-b137-fd4a8531f573"
+  }
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
 }</component>
@@ -107,8 +103,17 @@
       <option name="presentableId" value="Default" />
       <updated>1736493367209</updated>
       <workItem from="1736493368594" duration="8753000" />
-      <workItem from="1736953302966" duration="6523000" />
+      <workItem from="1736953302966" duration="7616000" />
     </task>
+    <task id="LOCAL-00001" summary="init">
+      <option name="closed" value="true" />
+      <created>1736960146808</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1736960146808</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -116,5 +121,9 @@
   </component>
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName=".env" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="init" />
+    <option name="LAST_COMMIT_MESSAGE" value="init" />
   </component>
 </project>
