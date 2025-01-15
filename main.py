@@ -8,7 +8,6 @@ from Helper.GetRole import admin_required, get_current_token, get_current_user_r
 from fastapi import FastAPI
 from fastapi_limiter import FastAPILimiter
 from fastapi_limiter.depends import RateLimiter
-
 from Controllers.UserController import UserController
 from Models import UserDTO, User
 from Models.Data import SessionLocal
@@ -94,14 +93,6 @@ def create_user(request: UserCreateRequest, token: str = Depends(admin_required)
         role=request.role,
         company=request.company
     )
-    return user_dto.__dict__
-
-@app.get("/users/{user_id}", response_model=dict, dependencies=[Depends(RateLimiter(times=5, seconds=60))])
-def get_user(user_id: int):
-    """
-    Route to retrieve a user by ID.
-    """
-    user_dto = user_controller.get_user(user_id=user_id)
     return user_dto.__dict__
 
 
@@ -194,8 +185,5 @@ def get_company_total_time(
     if role == "manager":
         total = timesheet_controller.get_total_hours_for_company(company)
         return {"company": company, "total_hours": total}
-    elif role == "admin":
-        total = timesheet_controller.get_total_hours_for_all()
-        return {"company": "All Companies", "total_hours": total}
     else:
         raise HTTPException(status_code=403, detail="Not authorized to view total hours")
